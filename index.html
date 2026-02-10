@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preetam Das — Senior AI Product Manager</title>
+  <meta name="description" content="Preetam Das is a Senior AI Product Manager with 10+ years shipping products — from real-time voice AI to $2.5M ARR platforms.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Outfit:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ========================================
+       RESET & FOUNDATIONS
+       ======================================== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #FAF9F6;
+      --bg-elevated: #FFFFFF;
+      --text-primary: #1A1A2E;
+      --text-secondary: #4A4A5A;
+      --text-tertiary: #7A7A8A;
+      --accent-teal: #2D5F5D;
+      --accent-gold: #C9A96E;
+      --border: #E0DDD8;
+      --border-subtle: #ECEAE5;
+      --card-bg: #FFFFFF;
+      --card-shadow: 0 1px 3px rgba(26,26,46,0.06), 0 4px 16px rgba(26,26,46,0.04);
+      --card-shadow-hover: 0 4px 12px rgba(26,26,46,0.08), 0 12px 32px rgba(26,26,46,0.06);
+      --nav-bg: rgba(250,249,246,0.85);
+      --timeline-line: #E0DDD8;
+      --tag-bg: #F0EEEA;
+      --shimmer-1: rgba(201,169,110,0.08);
+      --shimmer-2: rgba(201,169,110,0.20);
+      --shimmer-3: rgba(201,169,110,0.08);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0F0F12;
+      --bg-elevated: #18181D;
+      --text-primary: #E8E6E1;
+      --text-secondary: #A8A6A1;
+      --text-tertiary: #706E69;
+      --accent-teal: #3D8F8C;
+      --accent-gold: #D4B97A;
+      --border: #2A2A30;
+      --border-subtle: #1F1F25;
+      --card-bg: #18181D;
+      --card-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 4px 16px rgba(0,0,0,0.15);
+      --card-shadow-hover: 0 4px 12px rgba(0,0,0,0.3), 0 12px 32px rgba(0,0,0,0.2);
+      --nav-bg: rgba(15,15,18,0.85);
+      --timeline-line: #2A2A30;
+      --tag-bg: #22222A;
+      --shimmer-1: rgba(212,185,122,0.06);
+      --shimmer-2: rgba(212,185,122,0.18);
+      --shimmer-3: rgba(212,185,122,0.06);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: 'Source Sans 3', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      line-height: 1.7;
+      font-weight: 400;
+      font-size: 17px;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    /* ========================================
+       NAVIGATION
+       ======================================== */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--nav-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid transparent;
+      transform: translateY(-100%);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  opacity 0.3s ease,
+                  border-color 0.3s ease;
+    }
+
+    .nav.visible {
+      transform: translateY(0);
+      opacity: 1;
+      border-bottom-color: var(--border-subtle);
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover { color: var(--accent-teal); }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+      font-size: 1rem;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent-teal);
+      color: var(--accent-teal);
+      background: var(--tag-bg);
+    }
+
+    .theme-toggle .icon-sun,
+    .theme-toggle .icon-moon { pointer-events: none; }
+
+    [data-theme="light"] .theme-toggle .icon-sun { display: none; }
+    [data-theme="light"] .theme-toggle .icon-moon { display: inline; }
+    [data-theme="dark"] .theme-toggle .icon-sun { display: inline; }
+    [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+    /* ========================================
+       LAYOUT
+       ======================================== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section {
+      padding: 7rem 0;
+    }
+
+    .section-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-teal);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 3.5rem;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    /* ========================================
+       HERO
+       ======================================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(45,95,93,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 720px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.2rem, 7vw, 5.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-roles {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+      font-weight: 500;
+      color: var(--accent-teal);
+      margin-bottom: 1.75rem;
+      height: 2rem;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-roles-track {
+      display: flex;
+      flex-direction: column;
+      animation: roleCycle 9s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+    }
+
+    .hero-roles-track span {
+      height: 2rem;
+      display: flex;
+      align-items: center;
+    }
+
+    @keyframes roleCycle {
+      0%, 28%   { transform: translateY(0); }
+      33%, 61%  { transform: translateY(-2rem); }
+      66%, 94%  { transform: translateY(-4rem); }
+      100%      { transform: translateY(0); }
+    }
+
+    .hero-tagline {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 600px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-tagline strong {
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent-teal);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding-bottom: 2px;
+      border-bottom: 1.5px solid var(--accent-teal);
+      transition: gap 0.3s ease;
+    }
+
+    .hero-cta:hover { gap: 0.8rem; }
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-tertiary);
+      animation: scrollFloat 2.4s ease-in-out infinite;
+    }
+
+    .scroll-indicator span {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+
+    .scroll-indicator svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    @keyframes scrollFloat {
+      0%, 100% { transform: translateY(0); opacity: 0.6; }
+      50% { transform: translateY(8px); opacity: 1; }
+    }
+
+    /* ========================================
+       WORK CARDS
+       ======================================== */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .work-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: default;
+    }
+
+    .work-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--card-shadow-hover);
+    }
+
+    .work-card-metric {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      line-height: 1.15;
+    }
+
+    .work-card-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+
+    .work-card-company {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent-teal);
+      margin-bottom: 0.75rem;
+    }
+
+    .work-card-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .work-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      background: var(--tag-bg);
+      padding: 0.3rem 0.65rem;
+      border-radius: 4px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ========================================
+       TIMELINE
+       ======================================== */
+    .timeline {
+      position: relative;
+      padding: 1rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--timeline-line);
+    }
+
+    .timeline-entry {
+      position: relative;
+      width: 50%;
+      padding: 0 3rem 4rem;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .timeline-entry.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .timeline-entry:nth-child(odd) {
+      left: 0;
+      text-align: right;
+      padding-right: 3rem;
+      padding-left: 0;
+    }
+
+    .timeline-entry:nth-child(even) {
+      left: 50%;
+      text-align: left;
+      padding-left: 3rem;
+      padding-right: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      top: 6px;
+      width: 11px;
+      height: 11px;
+      background: var(--accent-teal);
+      border: 2px solid var(--bg);
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px var(--accent-teal);
+    }
+
+    .timeline-entry:nth-child(odd) .timeline-dot {
+      right: -6px;
+    }
+
+    .timeline-entry:nth-child(even) .timeline-dot {
+      left: -6px;
+    }
+
+    .timeline-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--accent-teal);
+      letter-spacing: 0.04em;
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline-company {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.15rem;
+    }
+
+    .timeline-role {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.95rem;
+      color: var(--accent-gold);
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ========================================
+       SIDE PROJECTS
+       ======================================== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-subtle);
+      border-radius: 10px;
+      padding: 1.75rem;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .project-card.revealed {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--card-shadow-hover);
+    }
+
+    .project-card-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 0.4rem;
+    }
+
+    .project-card-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 1rem;
+    }
+
+    .project-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    /* ========================================
+       SKILLS
+       ======================================== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2.5rem;
+    }
+
+    .skill-group-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-teal);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .skill-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+      background: var(--tag-bg);
+      padding: 0.35rem 0.7rem;
+      border-radius: 4px;
+      border: 1px solid var(--border-subtle);
+      letter-spacing: 0.01em;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+
+    .skill-pill:hover {
+      border-color: var(--accent-teal);
+      color: var(--accent-teal);
+    }
+
+    /* ========================================
+       AWARDS
+       ======================================== */
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .award-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .award-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 300%;
+      height: 100%;
+      background: linear-gradient(
+        105deg,
+        var(--shimmer-1) 0%,
+        var(--shimmer-2) 50%,
+        var(--shimmer-3) 100%
+      );
+      animation: shimmer 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes shimmer {
+      0%   { transform: translateX(-33%); }
+      100% { transform: translateX(33%); }
+    }
+
+    .award-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .award-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 0.25rem;
+      position: relative;
+    }
+
+    .award-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--text-tertiary);
+      margin-bottom: 0.75rem;
+      position: relative;
+    }
+
+    .award-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      position: relative;
+    }
+
+    /* ========================================
+       FOOTER
+       ======================================== */
+    .footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 4rem 0 3rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-link {
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--accent-teal);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding-bottom: 1px;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+
+    .footer-link:hover { border-bottom-color: var(--accent-teal); }
+
+    .footer-link svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    .footer-tagline {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-tertiary);
+      letter-spacing: 0.03em;
+    }
+
+    .footer-location {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-tertiary);
+      text-align: right;
+    }
+
+    /* ========================================
+       SCROLL REVEAL
+       ======================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========================================
+       RESPONSIVE: TABLET (768px)
+       ======================================== */
+    @media (max-width: 1024px) {
+      .work-grid { grid-template-columns: repeat(2, 1fr); }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+      .nav-links a.nav-hide-mobile { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      body { font-size: 16px; }
+
+      .container { padding: 0 1.25rem; }
+
+      .section { padding: 4.5rem 0; }
+
+      .section-title { font-size: 1.8rem; margin-bottom: 2.5rem; }
+
+      .nav { padding: 0 1.25rem; }
+      .nav-links { gap: 1rem; }
+      .nav-links a { font-size: 0.78rem; }
+      .nav-links a.nav-hide-tablet { display: none; }
+
+      .hero-content { max-width: 100%; }
+
+      .scroll-indicator { display: none; }
+
+      /* Work */
+      .work-grid { grid-template-columns: 1fr; }
+
+      .work-card { padding: 1.5rem; }
+      .work-card-metric { font-size: 1.6rem; }
+
+      /* Timeline - stack */
+      .timeline::before { left: 0; }
+
+      .timeline-entry,
+      .timeline-entry:nth-child(odd),
+      .timeline-entry:nth-child(even) {
+        left: 0;
+        width: 100%;
+        text-align: left;
+        padding-left: 2rem;
+        padding-right: 0;
+        padding-bottom: 2.5rem;
+      }
+
+      .timeline-dot,
+      .timeline-entry:nth-child(odd) .timeline-dot,
+      .timeline-entry:nth-child(even) .timeline-dot {
+        left: -5px;
+        right: auto;
+      }
+
+      /* Projects */
+      .projects-grid { grid-template-columns: 1fr; }
+
+      /* Skills */
+      .skills-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+
+      /* Awards */
+      .awards-grid { grid-template-columns: 1fr; }
+
+      /* Footer */
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      .footer-location { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <nav class="nav" id="nav" role="navigation">
+    <a href="#hero" class="nav-logo">Preetam Das</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#journey" class="nav-hide-mobile">Journey</a></li>
+      <li><a href="#lab" class="nav-hide-mobile">Lab</a></li>
+      <li><a href="#toolkit" class="nav-hide-tablet">Toolkit</a></li>
+      <li>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <span class="icon-sun">&#9728;</span>
+          <span class="icon-moon">&#9790;</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- ==================== HERO ==================== -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-name">Preetam Das</h1>
+        <div class="hero-roles" aria-label="Roles">
+          <div class="hero-roles-track">
+            <span>Senior AI Product Manager</span>
+            <span>Builder of AI Systems</span>
+            <span>10+ Years Shipping Products</span>
+          </div>
+        </div>
+        <p class="hero-tagline">
+          I don't just spec products &mdash; <strong>I build them</strong>. From real-time voice AI to $2.5M ARR platforms, I operate at the intersection of deep technology and business impact.
+        </p>
+        <a href="#work" class="hero-cta">See the work &darr;</a>
+      </div>
+    </div>
+    <div class="scroll-indicator" aria-hidden="true">
+      <span>Scroll</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M12 5v14M19 12l-7 7-7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ==================== WORK ==================== -->
+  <section class="section" id="work">
+    <div class="container">
+      <p class="section-label reveal">Impact</p>
+      <h2 class="section-title reveal">What I've Built</h2>
+      <div class="work-grid">
+
+        <div class="work-card reveal">
+          <div class="work-card-metric">$600K ARR</div>
+          <h3 class="work-card-title">Content Localization Platform</h3>
+          <p class="work-card-company">MindTickle</p>
+          <p class="work-card-desc">AI-powered translation pipeline with ElevenLabs voice dubbing. Reduced localization time from weeks to hours.</p>
+          <div class="work-card-tags">
+            <span class="tag">AI Translation</span>
+            <span class="tag">Voice Dubbing</span>
+            <span class="tag">Enterprise SaaS</span>
+          </div>
+        </div>
+
+        <div class="work-card reveal">
+          <div class="work-card-metric">$2.5M ARR</div>
+          <h3 class="work-card-title">Partners Platform</h3>
+          <p class="work-card-company">MindTickle</p>
+          <p class="work-card-desc">Channel enablement platform for onboarding, certification, and performance tracking across thousands of partner organizations.</p>
+          <div class="work-card-tags">
+            <span class="tag">Channel Sales</span>
+            <span class="tag">Platform Design</span>
+            <span class="tag">Scale</span>
+          </div>
+        </div>
+
+        <div class="work-card reveal">
+          <div class="work-card-metric">40% Lift</div>
+          <h3 class="work-card-title">AI Roleplay System</h3>
+          <p class="work-card-company">MindTickle</p>
+          <p class="work-card-desc">LLM-powered buyer simulations for sales practice. Built comprehensive eval frameworks across cold call, negotiation, and discovery.</p>
+          <div class="work-card-tags">
+            <span class="tag">LLM</span>
+            <span class="tag">Evaluation</span>
+            <span class="tag">Rep Readiness</span>
+          </div>
+        </div>
+
+        <div class="work-card reveal">
+          <div class="work-card-metric">First in India</div>
+          <h3 class="work-card-title">India Blue Book</h3>
+          <p class="work-card-company">Mahindra First Choice Wheels</p>
+          <p class="work-card-desc">India's first algorithmic used-car pricing engine. 40+ parameters. API-first architecture for banks, insurers, and dealerships.</p>
+          <div class="work-card-tags">
+            <span class="tag">Pricing Algorithms</span>
+            <span class="tag">0-to-1</span>
+            <span class="tag">API</span>
+          </div>
+        </div>
+
+        <div class="work-card reveal">
+          <div class="work-card-metric">&#8377;3Cr Revenue</div>
+          <h3 class="work-card-title">IoT Enterprise Solutions</h3>
+          <p class="work-card-company">Vodafone</p>
+          <p class="work-card-desc">GTM strategy and enterprise sales for fleet management, smart metering, and asset tracking across manufacturing and logistics.</p>
+          <div class="work-card-tags">
+            <span class="tag">IoT</span>
+            <span class="tag">Enterprise Sales</span>
+            <span class="tag">GTM</span>
+          </div>
+        </div>
+
+        <div class="work-card reveal">
+          <div class="work-card-metric">50+ Pages</div>
+          <h3 class="work-card-title">AI Eval Frameworks</h3>
+          <p class="work-card-company">MindTickle</p>
+          <p class="work-card-desc">Comprehensive quality infrastructure for AI roleplay. Audited 20+ evals, identified blind spots, designed tiered remediation plans.</p>
+          <div class="work-card-tags">
+            <span class="tag">Quality Assurance</span>
+            <span class="tag">AI Evals</span>
+            <span class="tag">Rigor</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== TIMELINE ==================== -->
+  <section class="section" id="journey" style="background: var(--bg-elevated); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+      <p class="section-label reveal">Experience</p>
+      <h2 class="section-title reveal">The Journey</h2>
+      <div class="timeline">
+
+        <div class="timeline-entry">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2010 &ndash; 2014</div>
+          <div class="timeline-company">NIT Warangal</div>
+          <div class="timeline-role">B.Tech, Computer Science</div>
+          <p class="timeline-desc">Thesis on Artificial Neural Networks. One of India's premier engineering institutions. Built the technical foundation that everything else stands on.</p>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2014 &ndash; 2016</div>
+          <div class="timeline-company">FactSet Research Systems</div>
+          <div class="timeline-role">Software Engineer</div>
+          <p class="timeline-desc">Financial data pipelines for Wall Street. Learned what production-grade means when hedge funds depend on your data at 6 AM EST.</p>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2016 &ndash; 2018</div>
+          <div class="timeline-company">IIFT, New Delhi</div>
+          <div class="timeline-role">MBA, International Business</div>
+          <p class="timeline-desc">India's top-ranked institute for international business. The bridge between deep technical foundation and business leadership.</p>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2018 &ndash; 2019</div>
+          <div class="timeline-company">Vodafone</div>
+          <div class="timeline-role">IoT Strategy & Business Development</div>
+          <p class="timeline-desc">Enterprise IoT sales generating &#8377;3Cr revenue. Learned to translate technical capabilities into business value for C-suite buyers.</p>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2019 &ndash; 2021</div>
+          <div class="timeline-company">Mahindra First Choice Wheels</div>
+          <div class="timeline-role">Product Manager</div>
+          <p class="timeline-desc">Launched India Blue Book &mdash; the country's first algorithmic used-car pricing engine. 0-to-1 product creation in a market with no existing data infrastructure.</p>
+        </div>
+
+        <div class="timeline-entry">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">2021 &ndash; Present</div>
+          <div class="timeline-company">MindTickle</div>
+          <div class="timeline-role">Senior Product Manager, AI Products</div>
+          <p class="timeline-desc">Shipping AI products generating $3.1M+ combined ARR. Content localization, partner enablement, AI roleplay, and eval frameworks.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SIDE PROJECTS ==================== -->
+  <section class="section" id="lab">
+    <div class="container">
+      <p class="section-label reveal">Side Projects</p>
+      <h2 class="section-title reveal">The Lab</h2>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-card-name">Koi App</div>
+          <p class="project-card-desc">Real-time voice AI companion with sub-100ms latency, semantic memory across 1000+ conversations, and native Hinglish support for the Indian market.</p>
+          <div class="project-card-tags">
+            <span class="tag">React Native</span>
+            <span class="tag">LiveKit</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">Pinecone</span>
+            <span class="tag">Sarvam AI</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-name">Credit CRM</div>
+          <p class="project-card-desc">B2B SaaS for identifying Indian companies seeking bank funding. Automated news scraping, signal detection, and AI-powered outreach generation.</p>
+          <div class="project-card-tags">
+            <span class="tag">React</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">FastAPI</span>
+            <span class="tag">Celery</span>
+            <span class="tag">Redis</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-name">Credit Intelligence Tracker</div>
+          <p class="project-card-desc">Data pipeline monitoring government sources for early credit demand signals. Predicts future credit needs 1&ndash;12 months in advance.</p>
+          <div class="project-card-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Selenium</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">PostgreSQL</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-name">Management Credibility Analyzer</div>
+          <p class="project-card-desc">Quantitative framework scoring whether company management "walks the talk" by tracking promises vs. outcomes from concalls and annual reports.</p>
+          <div class="project-card-tags">
+            <span class="tag">Python</span>
+            <span class="tag">NLP</span>
+            <span class="tag">Scoring Frameworks</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-name">esankhyiki MCP Server</div>
+          <p class="project-card-desc">Model Context Protocol server exposing India's Ministry of Statistics data through 7 major datasets. Production-ready with Jaeger tracing.</p>
+          <div class="project-card-tags">
+            <span class="tag">FastMCP 3.0</span>
+            <span class="tag">OpenTelemetry</span>
+            <span class="tag">Docker</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-name">Ralph</div>
+          <p class="project-card-desc">Real-time voice AI agent framework. Agent orchestration with WebRTC integration, audio pipeline, and memory persistence.</p>
+          <div class="project-card-tags">
+            <span class="tag">React Native</span>
+            <span class="tag">LiveKit</span>
+            <span class="tag">Agent Orchestration</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-name">MindTickle Engagement Suite</div>
+          <p class="project-card-desc">Competitive analysis of 12+ platforms and a 15-game architecture designed to replace Kahoot licensing. Identified $30M ARR market opportunity.</p>
+          <div class="project-card-tags">
+            <span class="tag">System Design</span>
+            <span class="tag">Competitive Analysis</span>
+            <span class="tag">Game Engine</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-name">Evaluation Frameworks</div>
+          <p class="project-card-desc">Audited 20+ AI evals, identified critical blind spots in schema compliance and input traceability, and designed tiered remediation plans.</p>
+          <div class="project-card-tags">
+            <span class="tag">AI Quality</span>
+            <span class="tag">Eval Design</span>
+            <span class="tag">Documentation</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SKILLS ==================== -->
+  <section class="section" id="toolkit" style="background: var(--bg-elevated); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+      <p class="section-label reveal">Capabilities</p>
+      <h2 class="section-title reveal">Toolkit</h2>
+      <div class="skills-grid reveal">
+
+        <div class="skill-group">
+          <div class="skill-group-title">AI / ML</div>
+          <div class="skill-pills">
+            <span class="skill-pill">LLM Integration</span>
+            <span class="skill-pill">Prompt Engineering</span>
+            <span class="skill-pill">Speech-to-Text</span>
+            <span class="skill-pill">Text-to-Speech</span>
+            <span class="skill-pill">Vector Databases</span>
+            <span class="skill-pill">Semantic Search</span>
+            <span class="skill-pill">AI Eval Frameworks</span>
+            <span class="skill-pill">RAG Pipelines</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Product</div>
+          <div class="skill-pills">
+            <span class="skill-pill">0-to-1 Development</span>
+            <span class="skill-pill">GTM Strategy</span>
+            <span class="skill-pill">Pricing Strategy</span>
+            <span class="skill-pill">Competitive Analysis</span>
+            <span class="skill-pill">User Research</span>
+            <span class="skill-pill">A/B Testing</span>
+            <span class="skill-pill">Revenue Modeling</span>
+            <span class="skill-pill">Partner Ecosystems</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Engineering</div>
+          <div class="skill-pills">
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">TypeScript</span>
+            <span class="skill-pill">React / React Native</span>
+            <span class="skill-pill">FastAPI</span>
+            <span class="skill-pill">PostgreSQL</span>
+            <span class="skill-pill">Redis</span>
+            <span class="skill-pill">Docker</span>
+            <span class="skill-pill">WebRTC / LiveKit</span>
+            <span class="skill-pill">REST APIs</span>
+            <span class="skill-pill">CI/CD</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Domain</div>
+          <div class="skill-pills">
+            <span class="skill-pill">Enterprise SaaS</span>
+            <span class="skill-pill">Sales Enablement</span>
+            <span class="skill-pill">Financial Services</span>
+            <span class="skill-pill">Automotive</span>
+            <span class="skill-pill">IoT</span>
+            <span class="skill-pill">Government Data</span>
+            <span class="skill-pill">Indian Market</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== AWARDS ==================== -->
+  <section class="section" id="awards">
+    <div class="container">
+      <p class="section-label reveal">Honors</p>
+      <h2 class="section-title reveal">Recognition</h2>
+      <div class="awards-grid">
+
+        <div class="award-card reveal">
+          <span class="award-icon" aria-hidden="true">&#9733;</span>
+          <div class="award-title">CEO's Award</div>
+          <div class="award-year">2022 &middot; MindTickle</div>
+          <p class="award-desc">Highest individual recognition at MindTickle, awarded for exceptional product impact across AI product lines.</p>
+        </div>
+
+        <div class="award-card reveal">
+          <span class="award-icon" aria-hidden="true">&#9830;</span>
+          <div class="award-title">R&D Dabster Award</div>
+          <div class="award-year">2023 &middot; MindTickle</div>
+          <p class="award-desc">Recognized for technical excellence and innovation within the R&D organization.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer" id="contact">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-heading">Let's talk.</div>
+          <div class="footer-links">
+            <a href="https://linkedin.com/in/preetam-das1" target="_blank" rel="noopener noreferrer" class="footer-link">
+              <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              LinkedIn
+            </a>
+            <a href="https://github.com/preetamdas" target="_blank" rel="noopener noreferrer" class="footer-link">
+              <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+          <p class="footer-tagline">Built with code, not templates.</p>
+        </div>
+        <div class="footer-location">
+          Pune, India
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    (function() {
+      'use strict';
+
+      // ---- Theme Toggle ----
+      const html = document.documentElement;
+      const toggle = document.getElementById('themeToggle');
+      const stored = localStorage.getItem('theme');
+
+      if (stored) {
+        html.setAttribute('data-theme', stored);
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        html.setAttribute('data-theme', 'dark');
+      }
+
+      toggle.addEventListener('click', function() {
+        const current = html.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+      });
+
+      // ---- Navbar show/hide on scroll ----
+      var nav = document.getElementById('nav');
+      var lastScroll = 0;
+
+      function handleNavScroll() {
+        var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollY > 100) {
+          nav.classList.add('visible');
+        } else {
+          nav.classList.remove('visible');
+        }
+        lastScroll = scrollY;
+      }
+
+      window.addEventListener('scroll', handleNavScroll, { passive: true });
+
+      // ---- Smooth scroll for anchor links ----
+      document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          var target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+
+      // ---- IntersectionObserver for scroll reveals ----
+      var revealElements = document.querySelectorAll('.reveal, .timeline-entry, .project-card');
+
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.12,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        revealElements.forEach(function(el) {
+          observer.observe(el);
+        });
+      } else {
+        // Fallback: just show everything
+        revealElements.forEach(function(el) {
+          el.classList.add('revealed');
+        });
+      }
+
+    })();
+  </script>
+
+</body>
+</html>
