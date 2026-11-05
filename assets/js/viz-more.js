@@ -13,8 +13,8 @@
     svg.append(S('line', { x1: 40, y1: 110, x2: W - 40, y2: 110, stroke: 'rgba(255,255,255,.25)' }));
     ['Opportunity area', 'Developing', 'Proficient', 'Standout'].forEach((l, i) => { const t = S('text', { x: 40 + (i + 0.5) * (W - 80) / 4, y: 140, 'text-anchor': 'middle', 'font-size': 11 }); t.textContent = l; svg.append(t); });
     items.forEach((it) => { svg.append(S('line', { x1: x(it.b), y1: 104, x2: x(it.b), y2: 116, stroke: 'rgba(255,255,255,.4)' })); });
-    const band = S('rect', { y: 92, height: 36, rx: 8, fill: 'rgba(17,245,144,.15)' }); svg.append(band);
-    const dot = S('circle', { cy: 110, r: 9, fill: '#11f590' }); svg.append(dot);
+    const band = S('rect', { y: 92, height: 36, rx: 8, fill: 'rgba(95,212,160,.15)' }); svg.append(band);
+    const dot = S('circle', { cy: 110, r: 9, fill: '#5fd4a0' }); svg.append(dot);
     const lab = S('text', { y: 80, 'text-anchor': 'middle', 'font-size': 13, 'font-weight': 600 }); lab.style.fill = '#fff'; svg.append(lab);
     const row = h('div', { style: 'display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-bottom:12px' });
     const btns = items.map((it, i) => { const b = h('button', { class: 'node', style: 'min-width:0', onclick: () => { pass[i] = !pass[i]; draw(); } }); row.append(b); return b; });
@@ -30,7 +30,7 @@
       return { t: best, se: 1 / Math.sqrt(info + 1) };
     };
     const draw = () => {
-      btns.forEach((b, i) => { b.classList.toggle('on', pass[i]); b.innerHTML = `<small>${items[i].level}</small><b>${escapeHTML(items[i].name)}</b><span style="font-size:12px;color:${pass[i] ? '#11f590' : 'var(--moon-2)'}">${pass[i] ? '✓ passed' : '✗ not passed'}</span>`; });
+      btns.forEach((b, i) => { b.classList.toggle('on', pass[i]); b.innerHTML = `<small>${items[i].level}</small><b>${escapeHTML(items[i].name)}</b><span style="font-size:12px;color:${pass[i] ? '#5fd4a0' : 'var(--moon-2)'}">${pass[i] ? '✓ passed' : '✗ not passed'}</span>`; });
       const { t, se } = est(); const n = pass.filter(Boolean).length;
       dot.setAttribute('cx', x(t)); lab.setAttribute('x', x(t)); lab.textContent = `${n}/${items.length} passed → skill ${(((t + 3) / 6)).toFixed(2)}`;
       band.setAttribute('x', x(Math.max(-3, t - se))); band.setAttribute('width', x(Math.min(3, t + se)) - x(Math.max(-3, t - se)));
@@ -55,7 +55,7 @@
       g.innerHTML = '';
       stages.forEach((s) => {
         const on = wk >= s.from;
-        g.append(S('rect', { x: x(s.from), y: 18, width: Math.max(8, x(s.to) - x(s.from) + 8), height: 24, rx: 6, fill: on ? 'rgba(17,245,144,.25)' : 'rgba(255,255,255,.06)', stroke: on ? '#11f590' : 'none' }));
+        g.append(S('rect', { x: x(s.from), y: 18, width: Math.max(8, x(s.to) - x(s.from) + 8), height: 24, rx: 6, fill: on ? 'rgba(95,212,160,.25)' : 'rgba(255,255,255,.06)', stroke: on ? '#5fd4a0' : 'none' }));
         const t = S('text', { x: x(s.from) + 6, y: 34, 'font-size': 11 }); t.textContent = s.name; t.style.fill = on ? '#fff' : ''; g.append(t);
       });
       const base = focus[f].base, gain = focus[f].gain;
@@ -63,9 +63,9 @@
       let d = '', fade = '';
       for (let w = 1; w <= 13; w += 0.25) { const y = 170 - val(w) * 1.1; d += (w === 1 ? 'M' : 'L') + x(w) + ' ' + y; const y2 = 170 - (base + gain * 0.6 * Math.exp(-(Math.max(0, w - 3)) / 2.5) * (w > 2 ? 1 : (w - 1))) * 1.1; fade += (w === 1 ? 'M' : 'L') + x(w) + ' ' + y2; }
       g.append(S('path', { d: fade, fill: 'none', stroke: 'rgba(255,255,255,.3)', 'stroke-dasharray': '4 4', 'stroke-width': 2 }));
-      g.append(S('path', { d, fill: 'none', stroke: '#11f590', 'stroke-width': 3 }));
+      g.append(S('path', { d, fill: 'none', stroke: '#5fd4a0', 'stroke-width': 3 }));
       g.append(S('line', { x1: x(wk), y1: 50, x2: x(wk), y2: 172, stroke: 'rgba(255,255,255,.5)' }));
-      g.append(S('circle', { cx: x(wk), cy: 170 - val(wk) * 1.1, r: 6, fill: '#11f590' }));
+      g.append(S('circle', { cx: x(wk), cy: 170 - val(wk) * 1.1, r: 6, fill: '#5fd4a0' }));
       const l1 = S('text', { x: W - 34, y: 170 - val(13) * 1.1 - 8, 'text-anchor': 'end', 'font-size': 11 }); l1.textContent = 'sprint, reinforced weekly'; g.append(l1);
       const l2 = S('text', { x: W - 34, y: 166, 'text-anchor': 'end', 'font-size': 11 }); l2.textContent = 'one-off workshop (fades)'; g.append(l2);
       const cur = stages.filter((s) => wk >= s.from && wk <= s.to).map((s) => `<b>${escapeHTML(s.name)}:</b> ${escapeHTML(s.d)}`).join('<br>') || 'Between stages: reps practise in their own deals.';
@@ -96,9 +96,9 @@
       let allowed = true; out.innerHTML = '';
       checks.forEach(([n, ok, why]) => {
         const reached = allowed; if (reached && !ok) allowed = false;
-        out.append(h('div', { style: `display:grid;grid-template-columns:24px 1fr;gap:8px;padding:6px 0;opacity:${reached ? 1 : .35}` }, [h('span', { style: `color:${!reached ? 'var(--moon-2)' : ok ? '#11f590' : '#ff6b6b'}` }, !reached ? '·' : ok ? '✓' : '✗'), h('span', {}, [h('b', { style: 'color:#fff' }, n + ' '), h('span', { class: 'muted' }, '— ' + why)])]));
+        out.append(h('div', { style: `display:grid;grid-template-columns:24px 1fr;gap:8px;padding:6px 0;opacity:${reached ? 1 : .35}` }, [h('span', { style: `color:${!reached ? 'var(--moon-2)' : ok ? '#5fd4a0' : '#ff6b6b'}` }, !reached ? '·' : ok ? '✓' : '✗'), h('span', {}, [h('b', { style: 'color:#fff' }, n + ' '), h('span', { class: 'muted' }, '— ' + why)])]));
       });
-      out.append(h('div', { class: 'big', style: `margin-top:8px;font-size:26px;color:${allowed ? '#11f590' : '#ff6b6b'}` }, allowed ? 'Allowed' : 'Denied'));
+      out.append(h('div', { class: 'big', style: `margin-top:8px;font-size:26px;color:${allowed ? '#5fd4a0' : '#ff6b6b'}` }, allowed ? 'Allowed' : 'Denied'));
       out.append(h('div', { class: 'muted', style: 'font-size:12px' }, 'Every request goes through this one function. Anything it cannot prove is a no.'));
     };
     root.append(h('div', { class: 'muted', style: 'margin-bottom:8px' }, 'Pick a person and a folder. The portal asks one question — is this allowed? — and answers no unless every check passes.'),
@@ -119,12 +119,12 @@
         const text = changed && s.edit ? s.after : s.text;
         const flag = changed && !s.edit ? s.flag : null;
         const col = { conflict: '#ff6b6b', review: '#f5c542' }[flag && flag.label];
-        const el = h('div', { style: `padding:8px 10px;border-radius:8px;border-left:3px solid ${s.edit && changed ? '#11f590' : col || 'transparent'};background:${col ? 'rgba(255,255,255,.04)' : 'transparent'}` });
+        const el = h('div', { style: `padding:8px 10px;border-radius:8px;border-left:3px solid ${s.edit && changed ? '#5fd4a0' : col || 'transparent'};background:${col ? 'rgba(255,255,255,.04)' : 'transparent'}` });
         el.innerHTML = escapeHTML(text);
         if (flag) {
           const tag = h('div', { style: `font:500 11px var(--mono);color:${col};margin-top:4px` }, `${flag.label === 'conflict' ? 'likely conflict' : 'worth reviewing'} · p=${flag.p.toFixed(2)}`);
           const fix = h('div', { style: 'font-size:13px;margin-top:4px;color:#cfd' }, [h('span', { class: 'muted' }, 'Suggested: '), flag.fix]);
-          const ok = h('button', { style: 'margin-top:6px;padding:4px 10px;border-radius:999px;border:1px solid #11f590;color:#11f590;font-size:12px', onclick: () => { s.text = flag.fixText || s.text; s.flag = null; draw(); } }, 'Apply');
+          const ok = h('button', { style: 'margin-top:6px;padding:4px 10px;border-radius:999px;border:1px solid #5fd4a0;color:#5fd4a0;font-size:12px', onclick: () => { s.text = flag.fixText || s.text; s.flag = null; draw(); } }, 'Apply');
           const keep = h('button', { style: 'margin:6px 0 0 6px;padding:4px 10px;border-radius:999px;border:1px solid var(--night-line);color:var(--moon-2);font-size:12px', onclick: () => { s.flag = null; draw(); } }, 'Keep');
           el.append(tag, fix, ok, keep);
         }
@@ -142,7 +142,7 @@
   /* ---------- Recommendation waterfall ---------- */
   V.waterfall = (root, D) => {
     const reps = D.reps, rules = D.rules; let r = 0;
-    const flow = h('div', { style: 'display:grid;gap:8px' }); const pick = h('div', { class: 'panel', style: 'border-color:rgba(17,245,144,.4)' });
+    const flow = h('div', { style: 'display:grid;gap:8px' }); const pick = h('div', { class: 'panel', style: 'border-color:rgba(95,212,160,.4)' });
     const sig = h('div', { class: 'panel' });
     const draw = () => {
       const rep = reps[r]; flow.innerHTML = '';
@@ -167,10 +167,10 @@
     const cam = h('div', { style: 'width:10px;height:10px;border-radius:50%;background:#333;margin:0 auto 8px;box-shadow:0 0 0 3px #1a1a1a' });
     const spans = words.map((w) => { const s = h('span', { style: 'transition:color .15s' }, w + ' '); panel.append(s); return s; });
     const wave = h('div', { style: 'display:flex;gap:3px;height:34px;align-items:center;margin:12px 0' });
-    const bars = Array.from({ length: 40 }, () => { const b = h('i', { style: 'flex:1;background:#11f590;border-radius:2px;height:4px;transition:height .1s' }); wave.append(b); return b; });
+    const bars = Array.from({ length: 40 }, () => { const b = h('i', { style: 'flex:1;background:#5fd4a0;border-radius:2px;height:4px;transition:height .1s' }); wave.append(b); return b; });
     const st = h('div', { class: 'detail muted' });
     const pause = h('button', {}, 'Stop talking'); const retake = h('button', {}, 'Say "take"'); const back = h('button', {}, 'Retake last line');
-    const paint = () => { spans.forEach((s, j) => { s.style.color = j < i ? 'rgba(255,255,255,.35)' : j === i ? '#11f590' : '#fff'; }); const cur = spans[i]; if (cur) panel.scrollTop = Math.max(0, cur.offsetTop - 40); st.innerHTML = state === 'reading' ? 'Listening — the prompter follows your voice word by word.' : state === 'paused' ? 'Silence detected — paused. Say <b>“take”</b> to resume.' : ''; };
+    const paint = () => { spans.forEach((s, j) => { s.style.color = j < i ? 'rgba(255,255,255,.35)' : j === i ? '#5fd4a0' : '#fff'; }); const cur = spans[i]; if (cur) panel.scrollTop = Math.max(0, cur.offsetTop - 40); st.innerHTML = state === 'reading' ? 'Listening — the prompter follows your voice word by word.' : state === 'paused' ? 'Silence detected — paused. Say <b>“take”</b> to resume.' : ''; };
     const tick = () => {
       bars.forEach((b) => { b.style.height = state === 'reading' ? (4 + Math.random() * 28) + 'px' : '3px'; });
       if (state === 'reading') { i = Math.min(words.length, i + 1); if (i >= words.length) i = 0; }
@@ -196,15 +196,15 @@
       secs.forEach((s) => grid.append(h('span', { class: 'muted', style: 'text-align:center' }, s)));
       stems.forEach((st, i) => {
         grid.append(h('b', { style: 'color:#fff;align-self:center' }, st.name));
-        secs.forEach((_, j) => grid.append(h('button', { 'aria-pressed': String(!!on[i][j]), 'aria-label': `${st.name} in ${secs[j]}`, style: `height:26px;border-radius:6px;background:${on[i][j] ? '#11f590' : 'rgba(255,255,255,.06)'};transition:background .2s`, onclick: () => { on[i][j] = on[i][j] ? 0 : 1; draw(); } })));
+        secs.forEach((_, j) => grid.append(h('button', { 'aria-pressed': String(!!on[i][j]), 'aria-label': `${st.name} in ${secs[j]}`, style: `height:26px;border-radius:6px;background:${on[i][j] ? '#5fd4a0' : 'rgba(255,255,255,.06)'};transition:background .2s`, onclick: () => { on[i][j] = on[i][j] ? 0 : 1; draw(); } })));
       });
       svg.innerHTML = '';
       const e = secs.map((_, j) => stems.reduce((a, st, i) => a + (on[i][j] ? st.w : 0), 0));
       const mx = stems.reduce((a, s) => a + s.w, 0);
       const px = (j) => 30 + j / (secs.length - 1) * (W - 60), py = (v) => 130 - v / mx * 110;
       let d = `M${px(0)} ${py(e[0])}`; for (let j = 1; j < secs.length; j++) { const xm = (px(j - 1) + px(j)) / 2; d += ` C${xm} ${py(e[j - 1])} ${xm} ${py(e[j])} ${px(j)} ${py(e[j])}`; }
-      svg.append(S('path', { d: d + ` L${px(secs.length - 1)} 130 L${px(0)} 130 Z`, fill: 'rgba(17,245,144,.15)' }));
-      svg.append(S('path', { d, fill: 'none', stroke: '#11f590', 'stroke-width': 3 }));
+      svg.append(S('path', { d: d + ` L${px(secs.length - 1)} 130 L${px(0)} 130 Z`, fill: 'rgba(95,212,160,.15)' }));
+      svg.append(S('path', { d, fill: 'none', stroke: '#5fd4a0', 'stroke-width': 3 }));
       secs.forEach((s, j) => { const t = S('text', { x: px(j), y: 146, 'text-anchor': 'middle', 'font-size': 11 }); t.textContent = s; svg.append(t); });
       const flat = Math.max(...e) - Math.min(...e) < mx * 0.25;
       note.innerHTML = flat ? 'The energy is flat — every section sounds the same. A directed mix leaves room: quiet opening, space in the bridge, choir only in choruses.' : 'Good shape: the song breathes. Sections build and release instead of everything playing at once.';
@@ -223,12 +223,12 @@
     const svg = S('svg', { viewBox: `0 0 ${W + P * 2} ${W + P * 2}`, style: 'max-width:260px;touch-action:none', role: 'img', 'aria-label': 'Bezier curve editor' });
     const X = (v) => P + v * W, Y = (v) => P + (1 - v) * W;
     svg.append(S('rect', { x: P, y: P, width: W, height: W, fill: 'none', stroke: 'rgba(255,255,255,.15)' }));
-    const l1 = S('line', { stroke: 'rgba(255,255,255,.4)' }), l2 = S('line', { stroke: 'rgba(255,255,255,.4)' }), path = S('path', { fill: 'none', stroke: '#11f590', 'stroke-width': 3 });
+    const l1 = S('line', { stroke: 'rgba(255,255,255,.4)' }), l2 = S('line', { stroke: 'rgba(255,255,255,.4)' }), path = S('path', { fill: 'none', stroke: '#5fd4a0', 'stroke-width': 3 });
     const h1 = S('circle', { r: 9, fill: '#1395a1', style: 'cursor:grab' }), h2 = S('circle', { r: 9, fill: '#1537b3', style: 'cursor:grab' });
     svg.append(l1, l2, path, h1, h2);
     const presets = [['Linear', [0, 0, 1, 1]], ['Easy ease', [0.33, 0, 0.67, 1]], ['Snappy out', [0.16, 1, 0.3, 1]], ['Overshoot', [0.34, 1.56, 0.64, 1]]];
     const lanes = h('div', { style: 'display:grid;gap:10px;align-content:center' });
-    const mk = (name) => { const dot = h('div', { style: 'width:26px;height:26px;border-radius:8px;background:#11f590;position:absolute;top:2px;left:0' }); lanes.append(h('div', {}, [h('div', { class: 'muted', style: 'font-size:12px;margin-bottom:4px' }, name), h('div', { style: 'position:relative;height:30px;border-radius:8px;background:rgba(255,255,255,.05)' }, [dot])])); return dot; };
+    const mk = (name) => { const dot = h('div', { style: 'width:26px;height:26px;border-radius:8px;background:#5fd4a0;position:absolute;top:2px;left:0' }); lanes.append(h('div', {}, [h('div', { class: 'muted', style: 'font-size:12px;margin-bottom:4px' }, name), h('div', { style: 'position:relative;height:30px;border-radius:8px;background:rgba(255,255,255,.05)' }, [dot])])); return dot; };
     const dLin = mk('Linear (robotic)'), dCur = mk('Your curve'), dEase = mk('Easy ease');
     const bez = (t, a, b) => 3 * (1 - t) ** 2 * t * a + 3 * (1 - t) * t ** 2 * b + t ** 3;
     const solve = (x, cc) => { let lo = 0, hi = 1; for (let k = 0; k < 30; k++) { const m = (lo + hi) / 2; bez(m, cc[0], cc[2]) < x ? lo = m : hi = m; } return bez((lo + hi) / 2, cc[1], cc[3]); };

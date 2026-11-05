@@ -25,7 +25,7 @@
     const W = 640, H = 380;
     const svg = S('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'A screen recording with effects applied' });
     const defs = S('defs');
-    defs.innerHTML = `<linearGradient id="bgg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#11f590"/><stop offset=".5" stop-color="#1395a1"/><stop offset="1" stop-color="#1537b3"/></linearGradient>
+    defs.innerHTML = `<linearGradient id="bgg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5fd4a0"/><stop offset=".5" stop-color="#1395a1"/><stop offset="1" stop-color="#1537b3"/></linearGradient>
       <filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="14" flood-color="#000" flood-opacity=".55"/></filter>
       <clipPath id="clipr"><rect id="cliprect" x="0" y="0" width="${W}" height="${H}" rx="0"/></clipPath>`;
     svg.append(defs);
@@ -43,7 +43,7 @@
     const btnT = S('text', { x: 530, y: 323, 'text-anchor': 'middle', 'font-size': 13, fill: '#fff', 'font-weight': 600 }); btnT.textContent = 'Publish'; win.append(btnT);
     const cursor = S('path', { d: 'M0 0 L0 18 L5 13 L9 22 L12 21 L8 12 L15 12 Z', fill: '#111', stroke: '#fff', 'stroke-width': 1.4 });
     cam.append(cursor);
-    const ring = S('circle', { r: 0, fill: 'none', stroke: '#11f590', 'stroke-width': 3, opacity: 0 }); cam.append(ring);
+    const ring = S('circle', { r: 0, fill: 'none', stroke: '#5fd4a0', 'stroke-width': 3, opacity: 0 }); cam.append(ring);
     root.append(h('div', { class: 'muted', style: 'margin-bottom:8px' }, 'Turn effects on and off. The recording stays the same; only post-processing changes.'));
     let st = {};
     root.append(toggles([['smooth', 'Smooth cursor', true], ['frame', 'Rounded frame + shadow', true], ['bg', 'Background', true], ['zoom', 'Auto-zoom on click', true]], (s) => { st = s; layout(); }));
@@ -74,7 +74,7 @@
       const atClick = i === 3;
       ring.setAttribute('cx', cx); ring.setAttribute('cy', cy);
       ring.setAttribute('r', atClick ? 10 + f * 26 : 0); ring.setAttribute('opacity', atClick ? 1 - f : 0);
-      btn.setAttribute('fill', atClick ? '#11f590' : '#1537b3');
+      btn.setAttribute('fill', atClick ? '#5fd4a0' : '#1537b3');
       const z = st.zoom ? (i === 3 ? 1.9 : i === 2 ? 1 + f * 0.9 : i === 4 ? 1.9 - f * 0.9 : 1) : 1;
       const fx = pad + 530 * sc, fy = pad * (H / W) + 318 * sc;
       cam.setAttribute('transform', `translate(${fx},${fy}) scale(${z}) translate(${-fx},${-fy})`);
@@ -108,12 +108,12 @@
       clear(); let t = 0, rule = 0, ai = 0;
       rows.forEach((r) => {
         const isAI = r.f.via === 'ai';
-        timers.push(setTimeout(() => { r.badge.textContent = isAI ? 'thinking…' : 'rule'; r.row.style.boxShadow = '0 0 0 1px ' + (isAI ? '#1395a1' : '#11f590'); if (isAI) r.badge.classList.add('pulse'); }, t));
+        timers.push(setTimeout(() => { r.badge.textContent = isAI ? 'thinking…' : 'rule'; r.row.style.boxShadow = '0 0 0 1px ' + (isAI ? '#1395a1' : '#5fd4a0'); if (isAI) r.badge.classList.add('pulse'); }, t));
         t += isAI ? 900 : 180;
         timers.push(setTimeout(() => {
           r.badge.classList.remove('pulse');
           r.val.textContent = r.f.value; r.badge.textContent = isAI ? 'local AI' : 'rule match';
-          r.badge.style.color = isAI ? '#7fe3ec' : '#11f590'; r.badge.style.borderColor = isAI ? '#1395a1' : '#11f590';
+          r.badge.style.color = isAI ? '#7fe3ec' : '#5fd4a0'; r.badge.style.borderColor = isAI ? '#1395a1' : '#5fd4a0';
           isAI ? ai++ : rule++; stats.innerHTML = `<b>${rule}</b> filled by rules · <b>${ai}</b> by the on-device model · <b>0</b> bytes sent to a server`;
         }, t));
         t += 120;
@@ -127,9 +127,9 @@
     const stages = D.stages || [];
     const turns = D.turns || [];
     let ti = 0;
-    const orb = h('div', { style: 'width:120px;height:120px;border-radius:50%;margin:6px auto 14px;background:radial-gradient(circle at 35% 30%,#b9ffe0,#11f590 35%,#1395a1 70%,#1537b3);box-shadow:0 0 60px rgba(17,245,144,.45);transition:transform .3s' });
+    const orb = h('div', { style: 'width:120px;height:120px;border-radius:50%;margin:6px auto 14px;background:radial-gradient(circle at 35% 30%,#b9ffe0,#5fd4a0 35%,#1395a1 70%,#1537b3);box-shadow:none;transition:transform .3s' });
     const you = h('div', { class: 'panel', style: 'margin-bottom:8px' }, '');
-    const koi = h('div', { class: 'panel', style: 'margin-bottom:12px;border-color:rgba(17,245,144,.35)' }, '');
+    const koi = h('div', { class: 'panel', style: 'margin-bottom:12px;border-color:rgba(95,212,160,.35)' }, '');
     const bars = h('div', { style: 'display:grid;gap:8px' });
     const items = stages.map((s) => {
       const bar = h('i', { style: 'width:0' });
@@ -189,9 +189,9 @@
         r.sc.textContent = total;
         const hot = total >= 15, watch = total >= 9;
         r.st.textContent = hot ? 'HOT' : watch ? 'watch' : 'noise';
-        r.st.style.color = hot ? '#001b0f' : watch ? '#11f590' : '';
-        r.st.style.background = hot ? '#11f590' : '';
-        r.st.style.borderColor = hot || watch ? '#11f590' : '';
+        r.st.style.color = hot ? '#001b0f' : watch ? '#5fd4a0' : '';
+        r.st.style.background = hot ? '#5fd4a0' : '';
+        r.st.style.borderColor = hot || watch ? '#5fd4a0' : '';
       });
       feed.innerHTML = latest ? `Latest: <b>${escapeHTML(latest.an)}</b> — ${escapeHTML(latest.n)} (strength ${latest.s})` : 'No signals yet.';
     };
@@ -224,7 +224,7 @@
   /* ---------- Data-source scorecard ---------- */
   V.scorecard = (root, D) => {
     const cols = D.cols, rows = D.rows;
-    const col = { ok: '#11f590', part: '#f5c542', no: '#ff6b6b' }, lbl = { ok: 'works', part: 'partial', no: 'broken' };
+    const col = { ok: '#5fd4a0', part: '#f5c542', no: '#ff6b6b' }, lbl = { ok: 'works', part: 'partial', no: 'broken' };
     const tbl = h('div', { style: 'overflow-x:auto' });
     const t = h('table', { style: 'width:100%;border-collapse:collapse;font-size:13px;min-width:560px' });
     t.innerHTML = '<thead><tr><th style="text-align:left;padding:8px;color:var(--moon-2);font-weight:500">Source</th>' + cols.map((c) => `<th style="padding:8px;color:var(--moon-2);font-weight:500">${escapeHTML(c)}</th>`).join('') + '</tr></thead>';
@@ -245,7 +245,7 @@
     const svg = S('svg', { viewBox: '0 0 320 320', role: 'img', 'aria-label': 'Radar chart of AI skills' });
     for (let l = 1; l <= 4; l++) { const pts = ax.map((_, i) => pt(i, l / 4 * R)); svg.append(S('polygon', { points: pts.join(' '), fill: 'none', stroke: 'rgba(255,255,255,.12)' })); }
     ax.forEach((a, i) => { const [x, y] = pt(i, R); svg.append(S('line', { x1: C, y1: C, x2: x, y2: y, stroke: 'rgba(255,255,255,.12)' })); const [tx, ty] = pt(i, R + 22); const tt = S('text', { x: tx, y: ty, 'text-anchor': 'middle', 'font-size': 10 }); tt.textContent = a.short; svg.append(tt); });
-    const poly = S('polygon', { fill: 'rgba(17,245,144,.22)', stroke: '#11f590', 'stroke-width': 2 }); svg.append(poly);
+    const poly = S('polygon', { fill: 'rgba(95,212,160,.22)', stroke: '#5fd4a0', 'stroke-width': 2 }); svg.append(poly);
     function pt(i, r) { const a = -Math.PI / 2 + i * 2 * Math.PI / N; return [C + r * Math.cos(a), C + r * Math.sin(a)]; }
     const lvl = D.levels || ['Unaware', 'Tries it', 'Uses it daily', 'Builds with it', 'Teaches it'];
     const sliders = h('div', { style: 'display:grid;gap:8px' });
@@ -269,7 +269,7 @@
   V.review = (root, D) => {
     const steps = D.steps; // [{name, reviewers:[...]}]
     const state = steps.map((s) => s.reviewers.map(() => 'pending'));
-    const col = { pending: 'var(--moon-2)', approved: '#11f590', changes: '#ff8a5c' };
+    const col = { pending: 'var(--moon-2)', approved: '#5fd4a0', changes: '#ff8a5c' };
     const canvas = h('div', { class: 'panel', style: 'position:relative;height:220px;background:linear-gradient(135deg,#1d2b3a,#2b1d3a);overflow:hidden;cursor:crosshair' }, [
       h('div', { style: 'position:absolute;left:8%;top:14%;width:52%;height:60%;border-radius:10px;background:linear-gradient(135deg,#ffcf6b,#ff7a59)' }),
       h('div', { style: 'position:absolute;left:66%;top:20%;width:26%;height:12px;border-radius:6px;background:rgba(255,255,255,.6)' }),
@@ -278,7 +278,7 @@
     let pins = 0;
     canvas.addEventListener('click', (e) => {
       const r = canvas.getBoundingClientRect(); pins++;
-      canvas.append(h('span', { style: `position:absolute;left:${e.clientX - r.left - 12}px;top:${e.clientY - r.top - 12}px;width:24px;height:24px;border-radius:50% 50% 50% 0;background:#11f590;color:#001b0f;display:grid;place-items:center;font:700 12px var(--mono);box-shadow:0 4px 10px rgba(0,0,0,.4)` }, String(pins)));
+      canvas.append(h('span', { style: `position:absolute;left:${e.clientX - r.left - 12}px;top:${e.clientY - r.top - 12}px;width:24px;height:24px;border-radius:50% 50% 50% 0;background:#5fd4a0;color:#001b0f;display:grid;place-items:center;font:700 12px var(--mono);box-shadow:0 4px 10px rgba(0,0,0,.4)` }, String(pins)));
     });
     const board = h('div', { style: 'display:grid;gap:10px;margin-top:12px' });
     const fileStatus = h('div', { class: 'big', style: 'font-size:24px' });
@@ -313,7 +313,7 @@
     const draw = () => {
       const capSrc = [...on].map((i) => srcs[i]).sort((a, b) => b.cap - a.cap)[0];
       const lvl = capSrc ? capSrc.cap : 0;
-      rungEls.forEach((el, i) => { const lit = i < lvl; el.style.borderColor = lit ? '#11f590' : ''; el.style.background = lit ? 'rgba(17,245,144,.08)' : ''; el.style.opacity = lit ? 1 : .45; });
+      rungEls.forEach((el, i) => { const lit = i < lvl; el.style.borderColor = lit ? '#5fd4a0' : ''; el.style.background = lit ? 'rgba(95,212,160,.08)' : ''; el.style.opacity = lit ? 1 : .45; });
       why.innerHTML = capSrc ? `Highest proof available: <b>L${lvl}</b>, from <b>${escapeHTML(capSrc.name.toLowerCase())}</b>. ${escapeHTML(capSrc.why)}` : 'Pick at least one kind of evidence.';
     };
     root.append(h('div', { class: 'muted', style: 'margin-bottom:8px' }, 'Pick the evidence you have about one seller\'s skill. Each kind of evidence can only prove so much — the ladder shows how high it gets you.'), btns, h('div', { class: 'grid2' }, [lad, why]));
@@ -330,7 +330,7 @@
       const s = {}; evs.slice(0, k + 1).forEach((e) => Object.assign(s, e.set));
       state.innerHTML = '<div class="muted" style="margin-bottom:8px">State clock — what the CRM stores</div>' + Object.entries(s).map(([a, b]) => `<div style="display:flex;justify-content:space-between;gap:10px;padding:4px 0;border-top:1px solid var(--night-line)"><span class="muted">${escapeHTML(a)}</span><b style="color:#fff">${escapeHTML(b)}</b></div>`).join('');
       trace.innerHTML = '<div class="muted">Event clock — why it became true</div>';
-      evs.slice(0, k + 1).forEach((e, i) => trace.append(h('div', { style: `display:grid;grid-template-columns:70px 1fr;gap:8px;padding:6px 8px;border-radius:8px;background:${i === k ? 'rgba(17,245,144,.1)' : 'rgba(255,255,255,.03)'}` }, [h('span', { style: 'font:500 11px var(--mono);color:var(--moon-2)' }, e.when), h('span', {}, [h('b', { style: 'color:#fff' }, e.who + ' '), e.what])])));
+      evs.slice(0, k + 1).forEach((e, i) => trace.append(h('div', { style: `display:grid;grid-template-columns:70px 1fr;gap:8px;padding:6px 8px;border-radius:8px;background:${i === k ? 'rgba(95,212,160,.1)' : 'rgba(255,255,255,.03)'}` }, [h('span', { style: 'font:500 11px var(--mono);color:var(--moon-2)' }, e.when), h('span', {}, [h('b', { style: 'color:#fff' }, e.who + ' '), e.what])])));
     };
     rng.oninput = draw;
     root.append(h('div', { class: 'muted', style: 'margin-bottom:8px' }, 'Slide through one deal. The left side is all a system of record keeps. The right side is the decision trace an AI agent needs to learn from precedent.'), lab, rng, h('div', { class: 'grid2', style: 'margin-top:12px' }, [state, trace]));
@@ -361,7 +361,7 @@
   V.coverage = (root, D) => {
     const pillars = D.pillars; const files = D.files;
     const st = pillars.map(() => 0);
-    const col = ['#ff6b6b', '#f5c542', '#11f590'], lbl = ['Missing', 'Partial', 'Complete'];
+    const col = ['#ff6b6b', '#f5c542', '#5fd4a0'], lbl = ['Missing', 'Partial', 'Complete'];
     const fileRow = h('div', { class: 'ctl' });
     const grid = h('div', { class: 'grid2' });
     const cells = pillars.map((p) => { const s = h('span', { style: 'font-size:11px;padding:2px 9px;border-radius:999px;border:1px solid' }); const c = h('div', { style: 'font-size:12px;color:var(--moon-2);margin-top:6px;min-height:18px' }); const el = h('div', { class: 'panel' }, [h('div', { style: 'display:flex;justify-content:space-between;align-items:center' }, [h('b', { style: 'color:#fff' }, p), s]), c]); grid.append(el); return { s, c }; });
@@ -390,7 +390,7 @@
   /* ---------- Before / after (navigation morph) ---------- */
   V.beforeafter = (root, D) => {
     const a = D.before, b = D.after;
-    const col = (title, items, accent) => h('div', { class: 'panel', style: accent ? 'border-color:rgba(17,245,144,.4)' : '' }, [h('div', { class: 'muted', style: 'margin-bottom:8px' }, title), ...items.map((x) => h('div', { style: `padding:7px 10px;border-radius:8px;margin-bottom:5px;background:${accent ? 'rgba(17,245,144,.07)' : 'rgba(255,255,255,.04)'}` }, [h('b', { style: 'color:#fff;font-size:13px' }, x.t), x.d ? h('div', { class: 'muted', style: 'font-size:12px' }, x.d) : null]))]);
+    const col = (title, items, accent) => h('div', { class: 'panel', style: accent ? 'border-color:rgba(95,212,160,.4)' : '' }, [h('div', { class: 'muted', style: 'margin-bottom:8px' }, title), ...items.map((x) => h('div', { style: `padding:7px 10px;border-radius:8px;margin-bottom:5px;background:${accent ? 'rgba(95,212,160,.07)' : 'rgba(255,255,255,.04)'}` }, [h('b', { style: 'color:#fff;font-size:13px' }, x.t), x.d ? h('div', { class: 'muted', style: 'font-size:12px' }, x.d) : null]))]);
     const wrap = h('div', {});
     root.append(tabs(['Before: organised by settings', 'After: organised by outcomes', 'Side by side'], (i) => { wrap.innerHTML = ''; wrap.append(i === 2 ? h('div', { class: 'grid2' }, [col(D.beforeTitle, a), col(D.afterTitle, b, true)]) : i === 0 ? col(D.beforeTitle, a) : col(D.afterTitle, b, true)); }, 2), wrap);
   };
@@ -403,7 +403,7 @@
     const prev = h('button', { onclick: () => { i = Math.max(0, i - 1); draw(); } }, '◂ Back'); const next = h('button', { onclick: () => { i = Math.min(st.length - 1, i + 1); draw(); } }, 'Next ▸');
     const draw = () => {
       const s = st[i];
-      phone.innerHTML = `<div style="font:500 10px var(--mono);color:var(--moon-2)">${i + 1}/${st.length}</div><div style="font:700 17px/1.15 var(--display);color:#fff">${escapeHTML(s.screen)}</div>` + (s.ui || []).map((u) => `<div style="padding:9px;border-radius:10px;background:${u.p ? '#11f590' : 'rgba(255,255,255,.07)'};color:${u.p ? '#001b0f' : '#ddd'};font-size:12px;text-align:center;font-weight:600">${escapeHTML(u.t)}</div>`).join('');
+      phone.innerHTML = `<div style="font:500 10px var(--mono);color:var(--moon-2)">${i + 1}/${st.length}</div><div style="font:700 17px/1.15 var(--display);color:#fff">${escapeHTML(s.screen)}</div>` + (s.ui || []).map((u) => `<div style="padding:9px;border-radius:10px;background:${u.p ? '#5fd4a0' : 'rgba(255,255,255,.07)'};color:${u.p ? '#001b0f' : '#ddd'};font-size:12px;text-align:center;font-weight:600">${escapeHTML(u.t)}</div>`).join('');
       note.innerHTML = `<div class="muted" style="font-size:12px">Conversion device</div><b style="color:#fff;font-size:16px">${escapeHTML(s.device)}</b><p class="muted" style="margin-top:6px">${escapeHTML(s.why)}</p>`;
       prog.firstChild.style.width = ((i + 1) / st.length * 100) + '%';
     };
@@ -416,7 +416,7 @@
     const groups = D.groups; const W = 640, H = 340;
     const svg = S('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'Map of skills grouped by stage' });
     const det = h('div', { class: 'detail panel' }, 'Hover or tap a star.');
-    const cols = ['#11f590', '#1395a1', '#7aa2ff', '#f5c542', '#ff8a5c'];
+    const cols = ['#5fd4a0', '#1395a1', '#7aa2ff', '#f5c542', '#ff8a5c'];
     groups.forEach((g, gi) => {
       const cx = 80 + gi * ((W - 160) / (groups.length - 1)), cy = H / 2 + (gi % 2 ? 40 : -40);
       const lt = S('text', { x: cx, y: cy + (gi % 2 ? 110 : -100), 'text-anchor': 'middle', 'font-size': 13, 'font-weight': 600 }); lt.textContent = g.name; lt.style.fill = '#fff'; svg.append(lt);
@@ -445,8 +445,8 @@
       q.opts.forEach((o, k) => box.append(h('button', { class: 'node', style: 'display:block;width:100%;margin-bottom:6px;min-width:0', onclick: (e) => {
         if (fb.textContent) return;
         const right = k === q.a; if (right) score++;
-        e.currentTarget.style.borderColor = right ? '#11f590' : '#ff6b6b';
-        box.querySelectorAll('.node')[q.a].style.borderColor = '#11f590';
+        e.currentTarget.style.borderColor = right ? '#5fd4a0' : '#ff6b6b';
+        box.querySelectorAll('.node')[q.a].style.borderColor = '#5fd4a0';
         fb.innerHTML = `${right ? '✓ Right.' : '✗ Not quite.'} ${escapeHTML(q.why)}`;
         box.append(h('button', { style: 'margin-top:8px;padding:7px 13px;border-radius:999px;border:1px solid var(--accent);color:var(--accent)', onclick: () => { i = (i + 1) % qs.length; if (!i) score = 0; draw(); } }, i === qs.length - 1 ? `Score ${score}/${qs.length} · restart` : 'Next question'));
       } }, o)));

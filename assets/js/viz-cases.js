@@ -19,13 +19,13 @@
       lanes.forEach((l, i) => {
         const bar = h('div', { style: 'display:flex;height:30px;border-radius:8px;overflow:hidden;background:rgba(255,255,255,.05)' });
         const segs = [...l.fixed, ...(l.parallel ? l.per : Array.from({ length: n }, () => l.per).flat())];
-        const col = i ? ['#11f590', '#1395a1', '#62ecb5', '#7fe3ec'] : ['#7a7a7a', '#5a5a5a', '#8d8d8d', '#666'];
+        const col = i ? ['#5fd4a0', '#1395a1', '#62ecb5', '#7fe3ec'] : ['#7a7a7a', '#5a5a5a', '#8d8d8d', '#666'];
         const segTotal = l.parallel ? totals[i] : segs.reduce((a, s) => a + s.d, 0);
         segs.forEach((s, k) => bar.append(h('i', { title: s.t, style: `width:${(s.d / mx) * 100 * (totals[i] / segTotal)}%;background:${col[k % col.length]};border-right:1px solid rgba(0,0,0,.4);transition:width .4s` })));
-        box.append(h('div', {}, [h('div', { style: 'display:flex;justify-content:space-between;margin-bottom:6px' }, [h('b', { style: 'color:#fff' }, l.name), h('span', { style: `font:600 14px var(--mono);color:${i ? '#11f590' : 'var(--moon-2)'}` }, unitDays(totals[i]))]), bar,
+        box.append(h('div', {}, [h('div', { style: 'display:flex;justify-content:space-between;margin-bottom:6px' }, [h('b', { style: 'color:#fff' }, l.name), h('span', { style: `font:600 14px var(--mono);color:${i ? '#5fd4a0' : 'var(--moon-2)'}` }, unitDays(totals[i]))]), bar,
           h('div', { class: 'muted', style: 'font-size:12px;margin-top:4px' }, [...l.fixed, ...l.per].map((s) => s.t).join(' → '))]));
       });
-      note.innerHTML = `At ${n} ${escapeHTML(D.unit)}: <b>${unitDays(totals[0])}</b> the old way vs <b style="color:#11f590">${unitDays(totals[1])}</b> with the AI pipeline. <span class="muted">${escapeHTML(D.caveat)}</span>`;
+      note.innerHTML = `At ${n} ${escapeHTML(D.unit)}: <b>${unitDays(totals[0])}</b> the old way vs <b style="color:#5fd4a0">${unitDays(totals[1])}</b> with the AI pipeline. <span class="muted">${escapeHTML(D.caveat)}</span>`;
     };
     const note = h('div', { class: 'detail panel' });
     rng.oninput = draw;
@@ -47,7 +47,7 @@
         grid.append(h('span', { style: 'align-self:center' }, [c.name, c.gap && showGaps ? h('span', { style: 'color:#f5c542' }, ' ⚠') : null]));
         sc.forEach((s, j) => {
           const v = c.cells[j]; const gap = showGaps && c.gap;
-          const col = gap ? '#f5c542' : v === 1 ? '#11f590' : v === 0 ? '#ff6b6b' : 'rgba(255,255,255,.15)';
+          const col = gap ? '#f5c542' : v === 1 ? '#5fd4a0' : v === 0 ? '#ff6b6b' : 'rgba(255,255,255,.15)';
           grid.append(h('button', { 'aria-label': `${c.name}, ${s}`, style: `height:30px;border-radius:7px;border:1px solid ${col};color:${col};font:600 12px var(--mono);background:${gap ? 'rgba(245,197,66,.08)' : 'transparent'}`, onclick: () => { det.innerHTML = `<b>${escapeHTML(c.name)} · ${escapeHTML(s)}.</b> ${escapeHTML(c.what)}` + (c.gap ? `<br><span style="color:#f5c542">Audit finding:</span> ${escapeHTML(c.gap)}` : ''); } }, v === 1 ? 'pass' : v === 0 ? 'fail' : '—'));
         });
       });
@@ -74,7 +74,7 @@
         const f = p.f(vals[p.k]); price *= f;
         p._val.textContent = p.fmt(vals[p.k]);
         const pct = Math.round((f - 1) * 100);
-        why.append(h('div', { style: 'display:grid;grid-template-columns:120px 1fr 52px;gap:8px;align-items:center;font-size:12px' }, [h('span', { class: 'muted' }, p.l), h('div', { class: 'bar' }, [h('i', { style: `width:${Math.min(100, Math.abs(pct) * 2)}%;background:${pct < 0 ? '#ff8a5c' : '#11f590'}` })]), h('b', { style: `color:${pct < 0 ? '#ff8a5c' : '#11f590'};text-align:right` }, (pct > 0 ? '+' : '') + pct + '%')]));
+        why.append(h('div', { style: 'display:grid;grid-template-columns:120px 1fr 52px;gap:8px;align-items:center;font-size:12px' }, [h('span', { class: 'muted' }, p.l), h('div', { class: 'bar' }, [h('i', { style: `width:${Math.min(100, Math.abs(pct) * 2)}%;background:${pct < 0 ? '#ff8a5c' : '#5fd4a0'}` })]), h('b', { style: `color:${pct < 0 ? '#ff8a5c' : '#5fd4a0'};text-align:right` }, (pct > 0 ? '+' : '') + pct + '%')]));
       });
       const spread = 0.03 + (vals.km > 90000 ? 0.03 : 0) + (vals.cond < 3 ? 0.02 : 0);
       out.textContent = fmt(price); band.textContent = `fair range ${fmt(price * (1 - spread))} – ${fmt(price * (1 + spread))} · ±${Math.round(spread * 100)}%`;
