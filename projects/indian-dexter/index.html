@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Indian Dexter: data for a markets agent — Preetam Das</title>
+<meta name="description" content="Before building a financial-analysis agent for Indian markets, I tested which free data sources actually work.">
+<meta property="og:title" content="Indian Dexter: data for a markets agent — Preetam Das">
+<meta property="og:description" content="Before building a financial-analysis agent for Indian markets, I tested which free data sources actually work.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://panducoder.github.io/projects/indian-dexter/">
+<link rel="canonical" href="https://panducoder.github.io/projects/indian-dexter/">
+<meta property="og:image" content="https://panducoder.github.io/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Instrument+Sans:wght@400;500;600&family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<noscript><style>.rv{opacity:1;transform:none}</style></noscript>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Preetam Das", "jobTitle": "Principal Product Manager, AI", "url": "https://panducoder.github.io", "sameAs": ["https://linkedin.com/in/preetam-das1", "https://github.com/panducoder", "https://x.com/i_m_pd"]}</script>
+</head>
+<body><nav class="nav" id="nav">
+  <div class="nav-left"><a class="nav-logo" href="../../index.html" aria-label="Home">PD</a><span class="nav-sep"></span><a class="link" href="../../#work">Work</a><a class="link on" href="../../#projects">Projects</a><a class="link" href="../../#career">Career</a><a class="link hide-sm" href="../../#story">Story</a></div>
+  <div class="nav-right"><a class="link hide-sm" href="../../#contact">Say hi!</a><span class="nav-sep hide-sm"></span><a href="https://linkedin.com/in/preetam-das1" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.2 1.5-2.2 3V21H9z"/></svg></a><a href="https://github.com/panducoder" aria-label="GitHub" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg></a><a href="https://x.com/i_m_pd" aria-label="X" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.8 2h3.4l-7.4 8.5L22.5 22h-6.8l-5.3-7-6.1 7H.9l7.9-9.1L.5 2h7l4.8 6.4zm-1.2 18h1.9L6.5 3.9H4.5z"/></svg></a></div>
+</nav>
+<header class="p-hero wrap">
+  <a class="crumb" href="../../#lab">← The lab</a>
+  <h1>Indian Dexter: data for a markets agent</h1>
+  <p class="lede">Before building a financial-analysis agent for Indian markets, I tested which free data sources actually work.</p>
+  <div class="meta"><span>2026</span><span>Research</span><span>Research and test suite</span><span><a href="https://github.com/panducoder/indian-dexter" target="_blank" rel="noopener" style="color:inherit">GitHub ↗</a></span></div>
+  <div class="stage rv"><div class="stage-bar"><b>Which sources work?</b><span class="viz-hint">Click a row</span></div>
+<div class="stage-body"><div class="vz" data-viz="scorecard" data-slug="indian-dexter"></div></div></div>
+  <div class="shots"><figure class="shot"><img src="../../assets/shots/dexter-research.jpg" alt="The API landscape report" loading="lazy"><figcaption>The API landscape report</figcaption></figure><figure class="shot"><img src="../../assets/shots/dexter-insights.jpg" alt="What a unified data layer would enable" loading="lazy"><figcaption>What a unified data layer would enable</figcaption></figure></div>
+</header>
+<div class="seam to-light" style="height:120px"></div>
+<main class="p-body"><div class="wrap"><div class="sec rv"><div class="num">01<b>The problem</b></div><div><p>US financial agents sit on clean APIs. In India the data is scattered across exchanges, regulators and scrapers, and most blog posts about it are out of date.</p></div></div><div class="sec rv"><div class="num">02<b>How it works</b></div><div><ol class="steps"><li><span><b>Map the landscape.</b> Sixteen data categories, from financial statements to insider trades.</span></li><li><span><b>Stress test.</b> Test every source against a small-cap company — if it works there, it works almost anywhere.</span></li><li><span><b>Score.</b> Works, partial or broken, and whether auth or a browser is needed.</span></li><li><span><b>Recommend a stack.</b> The combination that covers the most with the least fragility.</span></li></ol></div></div><div class="sec rv"><div class="num">03<b>My role</b></div><div><p>The research, Python test scripts and three reports.</p></div></div><div class="sec rv"><div class="num">04<b>Result</b></div><div><p>Research complete; the recommended stack is ready for an agent.</p></div></div><div class="sec rv"><div class="num">05<b>Built with</b></div><div><div class="tech"><span>Python</span><span>yfinance</span><span>nselib</span><span>Exchange APIs</span><span>MCP</span></div></div></div>
+<div class="next"><a href="../ai-proficiency/"><small>← Previous</small><b>A TOEFL for AI skills</b></a>
+<a href="../hidden-moats/" style="text-align:right"><small>Next →</small><b>Hidden moats: a research framework</b></a></div></div></main>
+<div style="height:40px"></div>
+<script>window.VIZDATA={"how": [{"t": "Map the landscape", "d": "Sixteen data categories, from financial statements to insider trades."}, {"t": "Stress test", "d": "Test every source against a small-cap company \u2014 if it works there, it works almost anywhere."}, {"t": "Score", "d": "Works, partial or broken, and whether auth or a browser is needed."}, {"t": "Recommend a stack", "d": "The combination that covers the most with the least fragility."}], "cols": ["Financials", "Market data", "Filings / insider", "Auth needed"], "rows": [{"n": "yfinance", "v": ["ok", "ok", "part", "ok"], "note": "Excellent for fundamentals and long price history; analyst estimates are empty for small-caps."}, {"n": "nselib", "v": ["part", "ok", "part", "ok"], "note": "17 functions tested; the financial results endpoint is broken."}, {"n": "Exchange internal APIs", "v": ["ok", "ok", "ok", "part"], "note": "5 of 5 endpoints work with a cookie step; best for insider and shareholding data."}, {"n": "Second exchange APIs", "v": ["no", "part", "no", "no"], "note": "1 of 11 endpoints reachable without a real browser."}, {"n": "Screener", "v": ["ok", "part", "ok", "ok"], "note": "Excellent financials and transcripts."}, {"n": "Government statistics", "v": ["part", "ok", "no", "ok"], "note": "Macro data works well."}]};</script>
+<script src="../../assets/js/viz.js"></script>
+<script src="../../assets/js/viz-custom.js"></script>
+<script src="../../assets/js/viz-more.js"></script>
+<script src="../../assets/js/viz-cases.js"></script>
+<div class="wrap"><div class="foot"><span>© 2026 Preetam Das · Pune, India</span>
+<span>Layout inspired by hiartem.com · <a href="../../index.html">Home</a></span></div></div>
+<div class="lb" id="lb"><img alt=""></div>
+<script src="../../assets/js/site.js"></script>
+</body></html>

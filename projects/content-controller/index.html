@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Host once, track everywhere: a learning content controller — Preetam Das</title>
+<meta name="description" content="Keep course content in one place, drop a tiny stub into any LMS, and get results back centrally.">
+<meta property="og:title" content="Host once, track everywhere: a learning content controller — Preetam Das">
+<meta property="og:description" content="Keep course content in one place, drop a tiny stub into any LMS, and get results back centrally.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://panducoder.github.io/projects/content-controller/">
+<link rel="canonical" href="https://panducoder.github.io/projects/content-controller/">
+<meta property="og:image" content="https://panducoder.github.io/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Instrument+Sans:wght@400;500;600&family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<noscript><style>.rv{opacity:1;transform:none}</style></noscript>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Preetam Das", "jobTitle": "Principal Product Manager, AI", "url": "https://panducoder.github.io", "sameAs": ["https://linkedin.com/in/preetam-das1", "https://github.com/panducoder", "https://x.com/i_m_pd"]}</script>
+</head>
+<body><nav class="nav" id="nav">
+  <div class="nav-left"><a class="nav-logo" href="../../index.html" aria-label="Home">PD</a><span class="nav-sep"></span><a class="link" href="../../#work">Work</a><a class="link on" href="../../#projects">Projects</a><a class="link" href="../../#career">Career</a><a class="link hide-sm" href="../../#story">Story</a></div>
+  <div class="nav-right"><a class="link hide-sm" href="../../#contact">Say hi!</a><span class="nav-sep hide-sm"></span><a href="https://linkedin.com/in/preetam-das1" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.2 1.5-2.2 3V21H9z"/></svg></a><a href="https://github.com/panducoder" aria-label="GitHub" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg></a><a href="https://x.com/i_m_pd" aria-label="X" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.8 2h3.4l-7.4 8.5L22.5 22h-6.8l-5.3-7-6.1 7H.9l7.9-9.1L.5 2h7l4.8 6.4zm-1.2 18h1.9L6.5 3.9H4.5z"/></svg></a></div>
+</nav>
+<header class="p-hero wrap">
+  <a class="crumb" href="../../#lab">← The lab</a>
+  <h1>Host once, track everywhere: a learning content controller</h1>
+  <p class="lede">Keep course content in one place, drop a tiny stub into any LMS, and get results back centrally.</p>
+  <div class="meta"><span>2026</span><span>AI products</span><span>Builder · architecture and full build</span></div>
+  <div class="stage rv"><div class="stage-bar"><b>One launch, three standards</b><span class="viz-hint">Switch standards, click the steps</span></div>
+<div class="stage-body"><div class="vz" data-viz="loop" data-slug="content-controller"></div></div></div>
+  
+</header>
+<div class="seam to-light" style="height:120px"></div>
+<main class="p-body"><div class="wrap"><div class="sec rv"><div class="num">01<b>The problem</b></div><div><p>Training content shipped as packages into dozens of customer LMSs is hard to update, license, version and track. A content controller keeps the content in one place while results flow back to both the LMS and a central database.</p></div></div><div class="sec rv"><div class="num">02<b>How it works</b></div><div><ol class="steps"><li><span><b>Import and validate.</b> Admins import a course package; a parser validates SCORM 1.2/2004, AICC, cmi5, xAPI and LTI packages.</span></li><li><span><b>Build a stub.</b> A small per-standard stub package is generated for upload to any LMS.</span></li><li><span><b>Launch and stream.</b> When a learner launches the stub, the runtime serves the player, signed content URLs and the tracking endpoints.</span></li><li><span><b>Server decides.</b> Roll-up is server-authoritative: a browser that claims a pass on a failing score is recorded as a fail.</span></li><li><span><b>Run it.</b> Accounts, licensing, versions, reports, webhooks, SSO, an automation API and PII anonymisation.</span></li></ol></div></div><div class="sec rv"><div class="num">03<b>Decisions & trade-offs</b></div><div><div class="decs"><div class="dec"><div><small>Chose</small><b>Server-authoritative results</b></div><div><small>Over</small><span>Trusting what the browser reports</span></div><div><small>Why</small><span>A browser can claim a pass; the server checks the score.</span></div></div></div></div></div><div class="sec rv"><div class="num">04<b>My role</b></div><div><p>I built it end to end as a large monorepo with 90+ logged decisions, a threat model, an OpenAPI spec and browser tests against real LMS standards.</p></div></div><div class="sec rv"><div class="num">05<b>Result</b></div><div><p>Working platform with tests across SCORM 1.2, AICC, cmi5 and LTI; remaining gaps documented.</p></div></div><div class="sec rv"><div class="num">06<b>Built with</b></div><div><div class="tech"><span>TypeScript</span><span>NestJS</span><span>Next.js</span><span>PostgreSQL</span><span>Prisma</span><span>Redis</span><span>MinIO</span><span>Playwright</span><span>Turborepo</span></div></div></div><div class="sec rv"><div class="num">07<b>A note</b></div><div><p class="note">This is current work for my employer, so names, customers, numbers and screens are left out. The visual above shows the idea, not the product.</p></div></div>
+<div class="next"><a href="../content-portal/"><small>← Previous</small><b>A portal for licensed training content</b></a>
+<a href="../skill-sprints/" style="text-align:right"><small>Next →</small><b>13-week skill sprints</b></a></div></div></main>
+<div style="height:40px"></div>
+<script>window.VIZDATA={"how": [{"t": "Import and validate", "d": "Admins import a course package; a parser validates SCORM 1.2/2004, AICC, cmi5, xAPI and LTI packages."}, {"t": "Build a stub", "d": "A small per-standard stub package is generated for upload to any LMS."}, {"t": "Launch and stream", "d": "When a learner launches the stub, the runtime serves the player, signed content URLs and the tracking endpoints."}, {"t": "Server decides", "d": "Roll-up is server-authoritative: a browser that claims a pass on a failing score is recorded as a fail."}, {"t": "Run it", "d": "Accounts, licensing, versions, reports, webhooks, SSO, an automation API and PII anonymisation."}], "modes": [{"name": "SCORM 1.2", "steps": [{"where": "LMS", "t": "Learner clicks the stub", "d": "The LMS launches a tiny package that contains no real content."}, {"where": "Runtime", "t": "Session created", "d": "The stub calls home; the runtime creates a registration and a signed content URL."}, {"where": "Player", "t": "Course plays", "d": "The real course streams from central storage inside the player."}, {"where": "Runtime", "t": "Commit", "d": "Score and status commit to the server, which decides the result."}, {"where": "LMS + DB", "t": "Results land twice", "d": "The LMS gets its completion; the central database keeps the detail."}]}, {"name": "cmi5", "steps": [{"where": "LMS", "t": "Launch with a token", "d": "The LMS launches with an auth token and an activity ID."}, {"where": "Runtime", "t": "Fetch credentials", "d": "The runtime exchanges the token for xAPI credentials."}, {"where": "Player", "t": "Course plays", "d": "Content streams centrally and sends xAPI statements."}, {"where": "Runtime", "t": "Statements checked", "d": "Statements are validated against cmi5 rules before they count."}, {"where": "LRS + DB", "t": "Results land", "d": "The LMS's record store and the central database both get results."}]}, {"name": "LTI 1.3", "steps": [{"where": "LMS", "t": "OIDC launch", "d": "The LMS starts a signed OpenID Connect launch."}, {"where": "Runtime", "t": "Verify the JWT", "d": "The runtime checks the signature and the deployment."}, {"where": "Player", "t": "Course plays", "d": "Content streams from central storage."}, {"where": "Runtime", "t": "Grade passback", "d": "Scores go back through the assignment and grade service."}, {"where": "LMS + DB", "t": "Results land", "d": "Gradebook updated; detail kept centrally."}]}]};</script>
+<script src="../../assets/js/viz.js"></script>
+<script src="../../assets/js/viz-custom.js"></script>
+<script src="../../assets/js/viz-more.js"></script>
+<script src="../../assets/js/viz-cases.js"></script>
+<div class="wrap"><div class="foot"><span>© 2026 Preetam Das · Pune, India</span>
+<span>Layout inspired by hiartem.com · <a href="../../index.html">Home</a></span></div></div>
+<div class="lb" id="lb"><img alt=""></div>
+<script src="../../assets/js/site.js"></script>
+</body></html>

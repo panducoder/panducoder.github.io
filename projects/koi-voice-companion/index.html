@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Koi: a voice companion that speaks Hinglish — Preetam Das</title>
+<meta name="description" content="Tap and talk to an AI companion in natural Hinglish, with memory of past conversations — built for sub-second replies.">
+<meta property="og:title" content="Koi: a voice companion that speaks Hinglish — Preetam Das">
+<meta property="og:description" content="Tap and talk to an AI companion in natural Hinglish, with memory of past conversations — built for sub-second replies.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://panducoder.github.io/projects/koi-voice-companion/">
+<link rel="canonical" href="https://panducoder.github.io/projects/koi-voice-companion/">
+<meta property="og:image" content="https://panducoder.github.io/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Instrument+Sans:wght@400;500;600&family=Inter+Tight:wght@500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/css/site.css">
+<noscript><style>.rv{opacity:1;transform:none}</style></noscript>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Preetam Das", "jobTitle": "Principal Product Manager, AI", "url": "https://panducoder.github.io", "sameAs": ["https://linkedin.com/in/preetam-das1", "https://github.com/panducoder", "https://x.com/i_m_pd"]}</script>
+</head>
+<body><nav class="nav" id="nav">
+  <div class="nav-left"><a class="nav-logo" href="../../index.html" aria-label="Home">PD</a><span class="nav-sep"></span><a class="link" href="../../#work">Work</a><a class="link on" href="../../#projects">Projects</a><a class="link" href="../../#career">Career</a><a class="link hide-sm" href="../../#story">Story</a></div>
+  <div class="nav-right"><a class="link hide-sm" href="../../#contact">Say hi!</a><span class="nav-sep hide-sm"></span><a href="https://linkedin.com/in/preetam-das1" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.6c0-1.3 0-3-1.9-3s-2.2 1.5-2.2 3V21H9z"/></svg></a><a href="https://github.com/panducoder" aria-label="GitHub" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 .5a11.5 11.5 0 0 0-3.6 22.4c.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 12 .5z"/></svg></a><a href="https://x.com/i_m_pd" aria-label="X" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M17.8 2h3.4l-7.4 8.5L22.5 22h-6.8l-5.3-7-6.1 7H.9l7.9-9.1L.5 2h7l4.8 6.4zm-1.2 18h1.9L6.5 3.9H4.5z"/></svg></a></div>
+</nav>
+<header class="p-hero wrap">
+  <a class="crumb" href="../../#lab">← The lab</a>
+  <h1>Koi: a voice companion that speaks Hinglish</h1>
+  <p class="lede">Tap and talk to an AI companion in natural Hinglish, with memory of past conversations — built for sub-second replies.</p>
+  <div class="meta"><span>2026</span><span>Tools &amp; apps</span><span>Solo build</span><span><a href="https://github.com/panducoder/companion-app" target="_blank" rel="noopener" style="color:inherit">GitHub ↗</a></span></div>
+  <div class="stage rv"><div class="stage-bar"><b>One turn of conversation (latency budget)</b><span class="viz-hint">Press Next turn</span></div>
+<div class="stage-body"><div class="vz" data-viz="orb" data-slug="koi-voice-companion"></div></div></div>
+  
+</header>
+<div class="seam to-light" style="height:120px"></div>
+<main class="p-body"><div class="wrap"><div class="sec rv"><div class="num">01<b>The problem</b></div><div><p>Voice AI is built for English. Most Indians speak a mix of Hindi and English, and an assistant that can&#x27;t keep up with that — or forgets you every time — isn&#x27;t a companion.</p></div></div><div class="sec rv"><div class="num">02<b>How it works</b></div><div><ol class="steps"><li><span><b>Real-time audio.</b> A React Native app streams audio over WebRTC through LiveKit.</span></li><li><span><b>Hear.</b> A Python agent transcribes with an Indian speech model built for code-mixed speech.</span></li><li><span><b>Remember and think.</b> An Indian LLM with a persona prompt, plus semantic memory in a vector database.</span></li><li><span><b>Speak.</b> An Indian text-to-speech voice replies; the target is first audio in under a second.</span></li><li><span><b>Backend.</b> Supabase for auth, data and edge functions.</span></li></ol></div></div><div class="sec rv"><div class="num">03<b>Decisions & trade-offs</b></div><div><div class="decs"><div class="dec"><div><small>Chose</small><b>Indian speech and language models</b></div><div><small>Over</small><span>Global English-first models</span></div><div><small>Why</small><span>Code-mixed Hinglish is the default, not an edge case.</span></div></div></div></div></div><div class="sec rv"><div class="num">04<b>My role</b></div><div><p>Designed and built the app, the agent and the memory layer in a one-day build sprint.</p></div></div><div class="sec rv"><div class="num">05<b>Result</b></div><div><p>Working build; beta was planned.</p></div></div><div class="sec rv"><div class="num">06<b>Built with</b></div><div><div class="tech"><span>React Native / Expo</span><span>LiveKit Agents</span><span>Python</span><span>Sarvam AI</span><span>Pinecone</span><span>Supabase</span></div></div></div>
+<div class="next"><a href="../smart-form-filler/"><small>← Previous</small><b>Smart Form Filler</b></a>
+<a href="../signal-scanner/" style="text-align:right"><small>Next →</small><b>AI-to-production signal scanner</b></a></div></div></main>
+<div style="height:40px"></div>
+<script>window.VIZDATA={"how": [{"t": "Real-time audio", "d": "A React Native app streams audio over WebRTC through LiveKit."}, {"t": "Hear", "d": "A Python agent transcribes with an Indian speech model built for code-mixed speech."}, {"t": "Remember and think", "d": "An Indian LLM with a persona prompt, plus semantic memory in a vector database."}, {"t": "Speak", "d": "An Indian text-to-speech voice replies; the target is first audio in under a second."}, {"t": "Backend", "d": "Supabase for auth, data and edge functions."}], "stages": [{"name": "Speech \u2192 text", "ms": 180}, {"name": "Memory lookup", "ms": 60}, {"name": "LLM first token", "ms": 260}, {"name": "Text \u2192 speech", "ms": 140}], "turns": [{"you": "Yaar aaj office mein bahut thak gaya.", "koi": "Arre, phir se late meeting? Chal, pehle paani pi \u2014 phir batao kya hua."}, {"you": "Kal mera interview hai, thoda nervous hoon.", "koi": "Last time tumne bola tha practice se confidence aata hai. Ek mock round karein abhi?"}, {"you": "Remind me what I said about my trip?", "koi": "You wanted to do Rishikesh in December \u2014 and you said no work laptop this time."}]};</script>
+<script src="../../assets/js/viz.js"></script>
+<script src="../../assets/js/viz-custom.js"></script>
+<script src="../../assets/js/viz-more.js"></script>
+<script src="../../assets/js/viz-cases.js"></script>
+<div class="wrap"><div class="foot"><span>© 2026 Preetam Das · Pune, India</span>
+<span>Layout inspired by hiartem.com · <a href="../../index.html">Home</a></span></div></div>
+<div class="lb" id="lb"><img alt=""></div>
+<script src="../../assets/js/site.js"></script>
+</body></html>
