@@ -122,7 +122,7 @@
         const el = h('div', { style: `padding:8px 10px;border-radius:8px;border-left:3px solid ${s.edit && changed ? '#5fd4a0' : col || 'transparent'};background:${col ? 'rgba(255,255,255,.04)' : 'transparent'}` });
         el.innerHTML = escapeHTML(text);
         if (flag) {
-          const tag = h('div', { style: `font:500 11px var(--mono);color:${col};margin-top:4px` }, `${flag.label === 'conflict' ? 'likely conflict' : 'worth reviewing'} · p=${flag.p.toFixed(2)}`);
+          const tag = h('div', { style: `font:500 11px var(--mono);color:${col};margin-top:4px` }, `${flag.label === 'conflict' ? 'likely conflict' : 'worth reviewing'} · ${Math.round(flag.p * 100)}% confident`);
           const fix = h('div', { style: 'font-size:13px;margin-top:4px;color:#cfd' }, [h('span', { class: 'muted' }, 'Suggested: '), flag.fix]);
           const ok = h('button', { style: 'margin-top:6px;padding:4px 10px;border-radius:999px;border:1px solid #5fd4a0;color:#5fd4a0;font-size:12px', onclick: () => { s.text = flag.fixText || s.text; s.flag = null; draw(); } }, 'Apply');
           const keep = h('button', { style: 'margin:6px 0 0 6px;padding:4px 10px;border-radius:999px;border:1px solid var(--night-line);color:var(--moon-2);font-size:12px', onclick: () => { s.flag = null; draw(); } }, 'Keep');

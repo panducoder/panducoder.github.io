@@ -371,3 +371,22 @@ html.thumb .vz { zoom: 1.3; }
 .p-cover { margin: 30px 0 0; border-radius: 22px; overflow: hidden; border: 1px solid var(--night-line); background: #efece6; }
 .p-cover img { width: 100%; aspect-ratio: 16/8; object-fit: cover; }
 .stage-label { font: 500 12px var(--mono); color: var(--moon-2); margin: 34px 0 10px; letter-spacing: .06em; text-transform: uppercase; }
+
+/* ---------- loop 1 (neutral viewer) ---------- */
+.card .thumb { position: relative; }
+.chip-res { position: absolute; left: 12px; bottom: 12px; font: 600 12px var(--body); padding: 5px 10px; border-radius: 999px; background: rgba(10,10,10,.82); color: #fff; backdrop-filter: blur(6px); }
+.card.mini.more { display: none; }
+#grid.all .card.mini.more { display: flex; }
+.more-wrap { text-align: center; margin-top: 22px; }
+.more-btn { color: var(--ink); border-color: var(--line); background: #fff; cursor: pointer; }
+#grid.all + .more-wrap { display: none; }
+.neutral-note { margin-top: 14px; font-size: 13px; color: var(--moon-2); max-width: 640px; border-left: 2px solid rgba(255,255,255,.2); padding-left: 10px; }
+.p-cover img { aspect-ratio: 16/6; max-height: 42vh; }
+.light + .seam.to-dark, .story + .seam.to-light { }
+.tile .polaroid .cap { font-size: 17px; }
+
+/* ---------- loop 2 ---------- */
+.p-cover img { aspect-ratio: 16/4.6; max-height: 30vh; object-position: center 60%; }
+.tile-demo .art { inset: 48px 0 0 0; overflow: hidden; }
+.demo-cap { position: absolute; left: 12px; right: 12px; bottom: 12px; padding: 10px 12px; border-radius: 10px; background: rgba(10,10,10,.82); color: #fff; font-size: 13px; line-height: 1.35; backdrop-filter: blur(6px); }
+@media (max-width: 860px) { .tiles .tile:nth-child(2), .tiles .tile:nth-child(3) { display: none; } .seam { height: 140px; } }

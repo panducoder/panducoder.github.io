@@ -30,10 +30,13 @@
   });
   if (dial) dial.style.transform = 'rotate(-120deg)';
 
-  // project filters
+  // project filters + show all
   const grid = document.getElementById('grid');
+  const more = document.getElementById('moreBtn');
+  if (more) more.addEventListener('click', () => grid.classList.add('all'));
   document.querySelectorAll('#filters button').forEach((b, _, all) => b.addEventListener('click', () => {
     all.forEach((x) => x.classList.toggle('on', x === b));
+    if (b.dataset.f !== '*') grid.classList.add('all');
     grid.querySelectorAll('.card').forEach((c) => { c.style.display = (b.dataset.f === '*' || c.dataset.cat === b.dataset.f) ? '' : 'none'; });
   }));
 

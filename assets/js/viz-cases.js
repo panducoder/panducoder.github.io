@@ -38,7 +38,7 @@
     const sc = D.scenarios, ck = D.checks; let showGaps = isThumb();
     const grid = h('div', { style: `display:grid;grid-template-columns:minmax(150px,1.4fr) repeat(${sc.length},1fr);gap:4px;font-size:13px;overflow-x:auto` });
     const det = h('div', { class: 'detail panel' }, 'Click a cell to see the check.');
-    const toggle = h('button', { onclick: () => { showGaps = !showGaps; toggle.classList.toggle('on', showGaps); toggle.textContent = showGaps ? 'Hide the audit findings' : 'Show what the audit found'; draw(); } }, 'Show what the audit found');
+    const toggle = h('button', { onclick: () => { showGaps = !showGaps; toggle.classList.toggle('on', showGaps); toggle.textContent = showGaps ? 'Hide the audit findings' : 'Reveal what these passes missed'; draw(); } }, 'Reveal what these passes missed');
     if (showGaps) toggle.classList.add('on');
     const draw = () => {
       grid.innerHTML = ''; grid.append(h('span'));
@@ -61,14 +61,16 @@
     const P = D.params; const vals = {};
     const out = h('div', { class: 'big' }); const band = h('div', { class: 'muted' }); const why = h('div', { style: 'display:grid;gap:6px;margin-top:10px' });
     const sl = h('div', { style: 'display:grid;gap:10px' });
-    const fmt = (x) => '₹' + Math.round(x / 1000).toLocaleString('en-IN') + 'k';
+    const fmt = (x) => '₹' + (x / 100000).toFixed(2) + ' lakh';
     P.forEach((p) => {
       vals[p.k] = p.v;
       const val = h('span', { class: 'muted', style: 'font-size:12px' });
       const r = h('input', { type: 'range', min: p.min, max: p.max, step: p.step || 1, value: p.v, 'aria-label': p.l, oninput: (e) => { vals[p.k] = +e.target.value; draw(); } });
       p._val = val; sl.append(h('div', {}, [h('label', { style: 'display:flex;justify-content:space-between' }, [h('span', {}, p.l), val]), r]));
     });
+    const carLbl = h('div', { class: 'muted', style: 'font-size:12px' });
     const draw = () => {
+      carLbl.textContent = `A ${vals.age}-year-old hatchback, mid variant · base price new ${fmt(D.base)}`;
       let price = D.base; why.innerHTML = '';
       P.forEach((p) => {
         const f = p.f(vals[p.k]); price *= f;
@@ -80,7 +82,7 @@
       out.textContent = fmt(price); band.textContent = `fair range ${fmt(price * (1 - spread))} – ${fmt(price * (1 + spread))} · ±${Math.round(spread * 100)}%`;
     };
     P.forEach((p) => { p.f = new Function('v', 'return ' + p.expr); p.fmt = new Function('v', 'return ' + p.show); });
-    root.append(h('div', { class: 'muted', style: 'margin-bottom:8px' }, D.intro), h('div', { class: 'grid2' }, [h('div', { class: 'panel' }, [sl]), h('div', { class: 'panel' }, [h('div', { class: 'muted', style: 'font-size:12px' }, D.car), out, band, why])]));
+    root.append(h('div', { class: 'muted', style: 'margin-bottom:8px' }, D.intro), h('div', { class: 'grid2' }, [h('div', { class: 'panel' }, [sl]), h('div', { class: 'panel' }, [carLbl, out, band, why])]));
     draw();
   };
 })();
